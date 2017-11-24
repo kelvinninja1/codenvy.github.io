@@ -32,3 +32,18 @@ entries:
     - title: Server Side Extensions
       url: /server-side-extensions.html
       output: web
+  - title: Dev Essentials
+    output: web
+    folderitems:
+    - title: Dependency Injection
+      url: /guice.html
+      output: web
+    - title: Transport&#58 DTO
+      url: /dto.html
+      output: web
+    - title: Communication&#58 JSON-RPC
+      url: /json-rpc.html
+      output: web
+    - title: Projects and File System
+      url: /projects-file-system.html
+      output: web
