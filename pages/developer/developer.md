@@ -1,5 +1,5 @@
 ---
-title: Developer Documentation
+title: Developer Documentation Overview
 sidebar: dev_sidebar
 keywords: dev docs
 permalink: developer.html
@@ -7,15 +7,12 @@ permalink: developer.html
 folder: developer
 ---
 
-## Hello World
+## Overview
 
-Click [here][index] to open Getting Started docs.
+## Your First IDE Plugin
 
-Testing [links][p1_landing_page].
+## Your First Server Side Plugin
 
-Testing [here][docker]
-## Javascript API for Client Side Extensions
 
-{% include image.html file="che_logo.png" %}
 
 {% include links.html %}
