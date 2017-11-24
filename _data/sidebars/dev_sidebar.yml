@@ -32,6 +32,12 @@ entries:
     - title: Server Side Extensions
       url: /server-side-extensions.html
       output: web
+  - title: SPI
+    output: web
+    folderitems:
+    - title: Overview and Core Concepts
+      url: /spi-overview.html
+      output: web
   - title: Dev Essentials
     output: web
     folderitems:
@@ -46,4 +52,19 @@ entries:
       output: web
     - title: Projects and File System
       url: /projects-file-system.html
+      output: web
+  - title: IDE UI
+    output: web
+    folderitems:
+    - title: Parts
+      url: /parts.html
+      output: web
+    - title: Actions
+      url: /actions.html
+      output: web
+    - title: Editor
+      url: /editor.html
+      output: web
+    - title: Themes
+      url: /themes.html
       output: web
