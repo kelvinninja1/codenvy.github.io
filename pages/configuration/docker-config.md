@@ -193,14 +193,6 @@ If you've your own domain and then DNS server, you may want to add wildcard DNS 
 
 There are multiple techniques for connecting to Docker including Unix sockets, localhost, and remote connections over TCP protocol. Depending upon the type of connection you require and the location of the machine node running Docker, we use different parameters.
 
-## Workspace Port Exposure  
-
-Inside your user's workspace containers, Che launches microservices on port `4401` and `4403`. We also launch SSH agents on port `22`. The terminal accessible in the workspace is also launched as an agent in the workspace on port `4411`. Custom stacks (configured in the dashboard) may expose additional services on different ports.
-
-Docker uses ephemeral port mapping. The ports accessible to your clients start at port `32768` and go through a wide range. When we start services internal to Docker, they are mapped to one of these ports. It is these ports that the browser (or SSH) clients connect to, and would need to be opened if connecting through a firewall.
-
-Additionally, if services are started within the workspace that expose their own ports, then those ports need to have an `EXPOSE <port>` command added to the workspace image Dockerfile, or from within the user dashboard these ports need to be explicitly added to the workspace configuration. As a courtesy, in our default stack images, we expose port `80` and `8080` within the container for any users that want to launch services on those ports.
-
 ## Firewalls  
 On Linux, a firewall may block inbound connections from within Docker containers to your localhost network. As a result, the workspace agent is unable to ping the Che server. You can check for the firewall and then disable it.
 
@@ -277,16 +269,9 @@ FROM my.registry.url:9000/image:latest
 
 Read more about registries in the [Docker documentation](https://docs.docker.com/registry/).
 
-## Custom Dockerfiles and Composefiles for Workspaces
-Within Che, your workspaces are powered by a set of runtime environments. The default runtime is Docker. Typically, admins have pre-built images in a Docker registry which are pulled when the workspace is created. You can optionally provide custom Dockerfiles (or let your users provide their own Dockerfiles), which will dynamically create a workspace image when a user creates a new workspace.
-
-To use your custom Dockerfiles, you can:
-
-1. Create a [custom stack]({{ base }}{{site.links["devops-runtime-stacks"]}}#custom-stack), which includes a [recipe]({{ base }}{{site.links["devops-runtime-recipes"]}}) with your Dockerfile.
-2. Or, users can create a custom recipe when creating a workspace that references your registry.
-
 ## Privileged Mode
-Docker's privileged mode allows a container to have root-level access to the host from within the container. This enables containers to do more than they normally would, but opens up security risks. You can enable your workspaces to have privileged mode, giving your users root-level access to the host where Che is running (in addition to root access of their workspace). Privileged mode is necessary if you want to enable certain features such as Docker in Docker.
+
+Docker privileged mode allows a container to have root-level access to the host from within the container. This enables containers to do more than they normally would, but opens up security risks. You can enable your workspaces to have privileged mode, giving your users root-level access to the host where Che is running (in addition to root access of their workspace). Privileged mode is necessary if you want to enable certain features such as Docker in Docker.
 
 By default, Che workspaces powered by a Docker container are not configured with Docker privileged mode.  There are many security risks to activating this feature - please review the various issues with blogs posted online.  
 
@@ -296,19 +281,23 @@ CHE_DOCKER_PRIVILEGED=true
 ```
 
 ## Mirroring Docker Hub  
+
 If you are running a private registry internally to your company, you can [optionally mirror Docker Hub](https://docs.docker.com/registry/recipes/mirror/). Your private registry will download and cache any images that your users reference from the public Docker Hub. You need to [configure your Docker daemon to make use of mirroring](https://docs.docker.com/registry/recipes/mirror).
 
 ## Using Docker In Workspaces
+
 If you'd like your users to work with projects which have their own Docker images and Docker build capabilities inside of their workspace, then you need to configure the workspace to work with Docker. You have three options:
 
-1. Activate Docker's privileged mode, where your user workspaces have access to the host.
+1. Activate Docker privileged mode, where your user workspaces have access to the host.
+
 ```shell
-# Update your codenvy.env to allow all Codenvy workspaces machines/containers privileged rights:
+# Update your codenvy.env to allow all Che workspaces machines/containers privileged rights:
 CHE_DOCKER_PRIVILEGED=true;
 ```
-2. Configure Che's workspaces to volume mount the host docker daemon socket file.
+2. Configure Che workspaces to volume mount the host docker daemon socket file.
+
 ```shell
-# Update your codenvy.env to allow all Codenvy workspaces to volume mount their host Daemon when starting:
+# Update your codenvy.env to allow all Che workspaces to volume mount their host Daemon when starting:
 CHE_WORKSPACE_VOLUME=/var/run/docker.sock:/var/run/docker.sock;
 ```
 3. Configure Docker daemon to listen to listen to tcp socket and specify `DOCKER_HOST` environment variable in workspace machine. Each host environment will have different network topology/configuration so below is only to be used as general example.
@@ -322,6 +311,7 @@ Second, export `DOCKER_HOST` variable in your workspace. You can do this in the 
 sudo dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375
 # Verify that the Docker API is responding at: http://$IP:2375/containers/json
 ```
+
 ```shell
 # In workspace machine
 docker -H tcp://$IP:2375 ps
@@ -333,9 +323,7 @@ docker ps
 
 These three tactics will allow user workspaces to perform `docker` commands from within their workspace to create and work with Docker containers that will be outside the workspace. In other words, this makes your user's workspace feel like their laptop where they would normally be performing `docker build` and `docker run` commands.
 
-You will need to make sure that your user's workspaces are powered from a stack that has Docker installed inside of it. Che's default Docker recipe images do not have Docker installed, but there is a sample Docker recipe image eclipse/alpine_jdk8 created from our [dockerfile](https://github.com/eclipse/che-dockerfiles/blob/master/recipes/alpine_jdk8/Dockerfile) that includes docker which can be used as new stack's base image.
-
-{% assign todo="SSH tunneling can also allow for using desktop docker daemon." %}
+You will need to make sure that your user's workspaces are powered from a stack that has Docker installed inside of it. Che default Docker recipe images do not have Docker installed, but you can build own image though [TODO: link to custom stack authoring].
 
 ## Development Mode
 You can debug the Che binaries that are running within the Che server. You can debug either the binaries that are included within the `eclipse/che-server` image that you download from DockerHub or you can mount a local Che git repository to debug binaries built in a local assembly. By using local binaries, this allows Che developers to perform a rapid edit / build / run cycle without having to rebuild Che's Docker images.

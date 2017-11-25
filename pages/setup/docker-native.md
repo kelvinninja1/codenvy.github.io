@@ -19,7 +19,7 @@ docker run -p 8080:8080 \
            --rm \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v <LOCAL_PATH>:/data \
-           eclipse/che-server:5.0.0-latest
+           eclipse/che-server:6.0.0
 
 # To run the nightly version of Che, replace eclipse/che-server:5.0.0-latest with
 eclipse/che-server:nightly
@@ -50,8 +50,7 @@ docker run -p 8080:8080 \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v <LOCAL_PATH>:/data:Z \
            --security-opt label:disable \
-           -e CHE_DOCKER_SERVER__EVALUATION__STRATEGY=docker-local \
-           eclipse/che-server:5.0.0-latest
+           eclipse/che-server:6.0.0
 ```
 
 ## Ports
@@ -94,7 +93,20 @@ There are many variables that can be set.
 | `CHE_DEBUG_SERVER_SUSPEND`   | If `true`, then activates `JPDA_SUSPEND` flag for Tomcat running the Che server. Used for advanced internal debugging of extensions.   | `false`   
 | `CHE_PORT`   | The port the Che server will bind itself to within the Che container.   | `8080`   
 
-You can find list of envs in [che.env](https://github.com/eclipse/che/blob/master/dockerfiles/init/manifests/che.env)
+You can find list of envs in [che.env](https://github.com/eclipse/che/blob/master/dockerfiles/init/manifests/che.env).
+
+You can create a file with envs you want to pass to che-server:
+
+
+```shell  
+docker run -p:8080:8080 \
+           --name che \
+           -v /var/run/docker.sock:/var/run/docker.sock \
+           -v <LOCAL_PATH>:/data \
+           --env-file /home/user/che.env \
+           eclipse/che-server:6.0.0
+```
+
 
 ## Run Che on Public IP Address
 
@@ -145,7 +157,5 @@ Save this into a file named `Composefile`. You can then run this with Docker Com
 # $IP is a public IP of your server
 CHE_HOST=$IP
 ```
-
-
 
 {% include links.html %}

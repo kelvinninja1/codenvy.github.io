@@ -7,7 +7,7 @@ permalink: openshift-config.html
 folder: configuration
 ---
 
-You can configure deployment of Che on OpenShift with env variables that are then saved into a [ConfigMap](https://github.com/eclipse/che/blob/che6/dockerfiles/init/modules/openshift/files/scripts/che-openshift.yml#L50).
+You can configure deployment of Che on OpenShift with env variables that are then saved into a [ConfigMap](https://github.com/eclipse/che/blob/che6/dockerfiles/init/modules/openshift/files/scripts/che-openshift.yml#L50). Export envs before running the script.
 
 ## OpenShift Flavor
 
@@ -44,8 +44,7 @@ There are two [Persistent Volume Claim](https://docs.openshift.com/container-pla
 * **unique** - each workspace gets own PVC. When a workspace is deleted, associated PVC is deleted as well. This is the default strategy.
 * **common** - there is one PVC for all workaspaces. When a PVC is shared with all workspaces, there's a special service pod that starts before workspace is created to create a subpath in the PV for this particular ws. When a workspace is deleted an associated subpath is deleted as well.
 
-If a common strategy is set, it is impossible to run multiple workspaces simultaneously because of a default `ReadWriteOnce` access mode for workspace PVCs.
-
+If a common strategy is set, it is impossible to run multiple workspaces simultaneously because of a default `ReadWriteOnce` [access mode](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/storage.html#pv-access-modes) for workspace PVCs.
 
 ## HTTPS Mode
 

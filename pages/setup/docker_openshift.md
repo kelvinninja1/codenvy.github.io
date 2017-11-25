@@ -19,6 +19,10 @@ With Che on Docker, users can have root access in workspace containers. This mea
 
 By default, `sshd` starts in all ready-to-go stack images. You can connect to a remote workspace using ssh keys or username/password (available in custom stacks only) or sync workspace project files to a local machine.
 
+## Privileged Containers
+
+Che on Docker allows workspace containers to be running in a [privileged mode](docker-config.html#privileged-mode).
+
 Though deploying administering Che on Docker may seem a little bit easier than doing it in OpenShift, it's OpenShift that unleashes the power of Eclipse Che as a workspace server and cloud IDE.
 
 **[Install on Docker][docker]**
