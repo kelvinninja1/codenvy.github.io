@@ -34,7 +34,7 @@ bash ./get-che.sh && bash ./wait-che.sh && bash ./stacks-che.sh
 
 ## OpenShift Container Platform
 
-* Use environment variables to set [deployment options](#deployment-options):
+* Use environment variables to set [deployment options][openshift-config]:
 
 ```shell
 export OPENSHIFT_ENDPOINT=<OCP_ENDPOINT_URL> # e.g. https://opnshmdnsy3t7twsh.centralus.cloudapp.azure.com:8443
@@ -59,7 +59,7 @@ bash ./get-che.sh && bash ./wait-che.sh && bash ./stacks-che.sh
 
 Please note that deploying Che on [OpenShift.io](openshift.io) (OSIO) is only intended for Che developers and OSIO contributors. This is useful when a developer wants to test how changes will work on [OpenShift.io](openshift.io). If you are interested in using OpenShift.io you can [sign up](https://openshift.io/) for the service.
 
-Use environment variables to set [deployment options](#deployment-options):
+Use environment variables to set [deployment options][openshift-config]:
 
 ```shell
 export OPENSHIFT_TOKEN=<OSO_TOKEN> # Retrieve the OSO_TOKEN from https://console.starter-us-east-2.openshift.com/console/command-line

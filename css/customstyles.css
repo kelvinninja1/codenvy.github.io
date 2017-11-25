@@ -1,3 +1,11 @@
+.navbar-right {
+    float: left!important;
+    margin-right: -15px;
+}
+.container {
+    width: 1360px;
+}
+
 figure {
     margin: 0;
     padding-bottom: 20px;
@@ -6,6 +14,13 @@ figure {
 body {
     font-size:15px;
 }
+
+.col-md-9 {
+    width: 75%;
+    margin-left: -17px;
+    margin-top: 70px;
+}
+
 
 .bs-callout {
     padding: 20px;
@@ -259,7 +274,7 @@ ul#results-container a:hover {
 #search-input {
     padding: .5em;
     margin-left:20px;
-    width:20em;
+    width:18em;
     font-size: 0.8em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -281,11 +296,15 @@ div#toc ul li {
     list-style: square;
 }
 div#toc ul {
-    background-color: whitesmoke;
-    padding: 5px;
-    border-radius: 5px;
-    max-width: 300px;
-    color: gray;
+      /*background-color: whitesmoke;*/
+      padding: 5px;
+      border-radius: 5px;
+      width: 270px;
+      color: gray;
+      float: right;
+      margin-left: 1000px;
+      margin-top: -10px;
+      position:fixed;
 }
 
 div#toc ul li ul {
@@ -893,10 +912,12 @@ span.soft {
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1300px) {
 
     ul#mysidebar {
-        width: 225px;
+        width: 296px;
+        margin-top: 70px;
+        position:fixed;
     }
 }
 

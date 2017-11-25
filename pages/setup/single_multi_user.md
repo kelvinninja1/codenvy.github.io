@@ -11,7 +11,7 @@ toc: false
 
 Che is shipped as two different assemblies - single and multi user. A single user Che **has no components that provide multi tenancy and permissions**. Thus, Che server and workspaces are not secured. This makes a single user Che a good choice for developers working locally.
 
-A multi user Che provides multi-tenancy i.e. **users accounts and workspaces are isolated and secured** with KeyCloak tokens. Che uses [KeyCloak](http://www.keycloak.org/) as a mechanism to register, manage and authenticate users. Permissions API regulates access to different entities in Che, such as workspaces, stacks, recipes, organizations etc. User information is stored in a persistent DB that supports migrations (PostgreSQL).
+A multi user Che provides multi-tenancy i.e. **users accounts and workspaces are isolated and secured** with Keycloak tokens. Che uses [Keycloak](http://www.keycloak.org/) as a mechanism to register, manage and authenticate users. Permissions API regulates access to different entities in Che, such as workspaces, stacks, recipes, organizations etc. User information is stored in a persistent DB that supports migrations (PostgreSQL).
 
 ## What Flavor to Choose?
 
@@ -31,7 +31,7 @@ By default **Che gets deployed as a single user** assembly both on Docker and Op
 
 Proceed to installation:
 
-* Run on [Docker][docker]
-* Deploy to [OpenShift][openshift]
+* Run on  Docker: [single-user][docker] or [multi-user][multi-user-docker]
+* Deploy to OpenShift: [single-user][openshift] or [multi-user][multi-user-openshift]
 
 {% include links.html %}

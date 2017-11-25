@@ -9,7 +9,7 @@ folder: configuration
 
 {% include links.html %}
 
-Configuration is handled by modifying [che.env](https://github.com/eclipse/che/blob/master/dockerfiles/init/manifests/che.env) placed in the host folder volume mounted to `:/data`. This configuration file is generated during the `che init` phase. If you rerun `che init` in an already initialized folder, the process will abort unless you pass `--force`, `--pull`, or `--reinit`.
+Configuration is handled by modifying [che.env](https://github.com/eclipse/che/blob/master/dockerfiles/init/manifests/che.env) placed in the root of a host folder volume mounted to `:/data`. This configuration file is generated during the `che init` phase. If you rerun `che init` in an already initialized folder, the process will abort unless you pass `--force`, `--pull`, or `--reinit`.
 
 Each variable is documented with an explanation and usually commented out. If you need to set a variable, uncomment it and configure it with your value. You can then run `che config` to apply this configuration to your system. `che start` also reapplies the latest configuration.
 
@@ -18,6 +18,7 @@ You can run `che init` to install a new configuration into an empty directory. T
 If you run `che config`, che runs puppet to transform your puppet templates into a che instance configuration, placing the results into `/che/instance` if you volume mounted that, or into a `instance` subdirectory of the path you mounted to `/che`.  Each time you start che, `che config` is run to ensure instance configuration files are properly generated and consistent with the configuration you have specified in `che.env`.
 
 ## Saving Configuration in Version Control
+
 Administration teams that want to version control your che configuration should save `che.env`. This is the only file that should be saved with version control. It is not necessary, and even discouraged, to save the other files. If strategy were to perform a `che upgrade` we may replace these files with templates that are specific to the version that is being upgraded. The `che.env` file maintains fidelity between versions and we can generate instance configurations from that.
 
 The version control sequence would be:
@@ -326,6 +327,7 @@ These three tactics will allow user workspaces to perform `docker` commands from
 You will need to make sure that your user's workspaces are powered from a stack that has Docker installed inside of it. Che default Docker recipe images do not have Docker installed, but you can build own image though [TODO: link to custom stack authoring].
 
 ## Development Mode
+
 You can debug the Che binaries that are running within the Che server. You can debug either the binaries that are included within the `eclipse/che-server` image that you download from DockerHub or you can mount a local Che git repository to debug binaries built in a local assembly. By using local binaries, this allows Che developers to perform a rapid edit / build / run cycle without having to rebuild Che's Docker images.
 
 Dev mode is activated by passing `--debug` to any command on the CLI.

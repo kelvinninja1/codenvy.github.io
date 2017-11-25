@@ -66,4 +66,17 @@ If you want to always have the latest nightly image or use own latest tags when 
 
 `IMAGE_PULL_POLICY`
 
+## Enable ssh and sudo
+
+By default, pods are run with an arbitrary user that has a randomly generated UID (the range is defined in OpenShift config file). This security constrain has several consequences for Eclipse Che users:
+
+* installers for language servers will fails since most of them require `sudo`
+* no way to run any sudo commands in a running workspace
+
+It is possible to allow root access which in its turn allows running system services such as `sshd`. You can change this behavior. See [OpenShift Documentation for details](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_scc.html#enable-images-to-run-with-user-in-the-dockerfile).
+
+## Multi-User Configuration
+
+See: [Multi User Che on OpenShift][multi-user-openshift]
+
 {% include links.html %}

@@ -19,13 +19,15 @@ With Che on Docker, users can have root access in workspace containers. This mea
 
 By default, `sshd` starts in all ready-to-go stack images. You can connect to a remote workspace using ssh keys or username/password (available in custom stacks only) or sync workspace project files to a local machine.
 
-## Privileged Containers
+### Privileged Containers
 
 Che on Docker allows workspace containers to be running in a [privileged mode](docker-config.html#privileged-mode).
 
 Though deploying administering Che on Docker may seem a little bit easier than doing it in OpenShift, it's OpenShift that unleashes the power of Eclipse Che as a workspace server and cloud IDE.
 
-**[Install on Docker][docker]**
+**[Install Single-User Che on Docker][docker]**
+
+**[Install Multi-User Che on Docker][multi-user-docker]**
 
 ## Deploying to OpenShift
 
@@ -43,8 +45,8 @@ HAProxy that runs in an OpenShift cluster takes care of creating secure routes, 
 
 OpenShift restarts failed deployments and offers health checks for pods. This can significantly minimize the effect of infrastructure outages.
 
-At the same time there are some OpenShift security restrictions which are [root access](#root-access) and [ssh access](#ssh-access). See [Configuration][openshift-config].
+**[Deploy Single User Che to OpenShift][openshift]**
 
-**[Deploy to OpenShift][openshift]**
+**[Deploy Multi-User Che to OpenShift][multi-user-openshift]**
 
 {% include links.html %}
