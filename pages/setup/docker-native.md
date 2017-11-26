@@ -38,10 +38,11 @@ docker pull eclipse/che-server:6.0.0-latest
 docker restart che
 ```
 
-Che has started when you see `Server startup in ##### ms`.  After starting, Che is available at `localhost:8080` or a remote IP if Che has been started remotely.  The examples on this page assume that I am running this container on a Windows machine and I would like my workspaces to be saved in `C:\tmp`.  Note that on Windows, volume mounts require Linux-formatted syntax, for which they are here.
+Che has started when you see `Server startup in ##### ms`.  After starting, Che is available at `localhost:8080` or a remote IP if Che has been started remotely.
 
 ## SELinux
-If you are on SELinux then run this instead:
+
+If SELinux is enabled, then run this instead:
 
 ```shell  
 # Run the latest released version of Che

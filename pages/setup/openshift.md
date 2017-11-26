@@ -1,6 +1,6 @@
 ---
 title: "Single-User&#58 Deploy to OpenShift"
-keywords: openshift, installation
+keywords: openshift, installation, pvc, https, deployment
 tags: [installation, openshift]
 sidebar: user_sidebar
 permalink: openshift.html
@@ -16,6 +16,14 @@ Che can be deployed to MiniShift, OCP, OSD and OSO v3.5+.
 * `bash`
 
 Scripts will use default settings for things like Che project name, http/https protocol, log level etc. See: [OpenShift config][openshift-config]
+
+## Deployment Diagram
+
+There are a few essential Kubernetes and OpenShift objects that are created when Che is deployed to OpenShift. When a workspace is started additional objects are created. See the diagram below:
+
+{% include image.html file="ocp_single_user.png" %}
+
+This diagram depicts the default [PVC strategy](openshift-config.html#volumes) (PVC per workspace).
 
 ## MiniShift
 

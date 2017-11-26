@@ -75,8 +75,55 @@ By default, pods are run with an arbitrary user that has a randomly generated UI
 
 It is possible to allow root access which in its turn allows running system services such as `sshd`. You can change this behavior. See [OpenShift Documentation for details](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_scc.html#enable-images-to-run-with-user-in-the-dockerfile).
 
-## Multi-User Configuration
+## Multi-User: Using Own Keycloak and PSQL
 
-See: [Multi User Che on OpenShift][multi-user-openshift]
+Out of the box Che is deployed together with Keycloak and Postgres pods, and all three services are properly configured to be able to communicate. However, it does not matter for Che what Keycloak server and Postgres DB to use, as long as those have compatible versions and meet certain requirements.
 
+
+***Che Server and Keycloak***
+
+KeyCloak server URL is retrieved from the `CHE_KEYCLOAK_AUTH-SERVER-URL` environment variable. A new installation of Che will use its own Keycloak server running in a Docker container pre-configured to communicate with Che server. Realm and client are mandatory environment variables. By default Keycloak environment variables are:
+
+```
+CHE_KEYCLOAK_AUTH__SERVER__URL=http://${KC_ROUTE}:5050/auth
+CHE_KEYCLOAK_REALM=che
+CHE_KEYCLOAK_CLIENT__ID=che-public
+```
+
+You can use your own Keycloak server. Create a new realm and a public client. A few things to keep in mind:
+
+* It must be a public client
+* `redirectUris` should be `${CHE_SERVER_ROUTE/*`. If no or incorrect `redirectUris` are provided or the one used is not in the list of `redirectUris`, Keycloak will display an error saying that redirect_uri param is invalid.
+* `webOrigins` should be  either`${CHE_SERVER_ROUTE}` or `*`. If no or incorrect `webOrigins` are provided, Keycloak script won't be injected into a page because of CORS error.
+
+
+***Che Server and PostgreSQL***
+
+Che server uses the below defaults to connect to PostgreSQL to store info related to users, user preferences and workspaces:
+
+```
+CHE_JDBC_USERNAME=pgche
+CHE_JDBC_PASSWORD=pgchepassword
+CHE_JDBC_DATABASE=dbche
+CHE_JDBC_URL=jdbc:postgresql://postgres:5432/dbche
+CHE_JDBC_DRIVER__CLASS__NAME=org.postgresql.Driver
+CHE_JDBC_MAX__TOTAL=20
+CHE_JDBC_MAX__IDLE=10
+CHE_JDBC_MAX__WAIT__MILLIS=-1
+```
+
+Che currently uses version 9.6.
+
+
+***Keycloak and PostgreSQL***
+
+Database URL, port, database name, user and password are defined as environment variables in Keycloak pod. Defaults are:
+
+```
+POSTGRES_PORT_5432_TCP_ADDR=postgres
+POSTGRES_PORT_5432_TCP_PORT=5432
+POSTGRES_DATABASE=keycloak
+POSTGRES_USER=keycloak
+POSTGRES_PASSWORD=keycloak
+```
 {% include links.html %}
