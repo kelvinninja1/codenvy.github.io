@@ -6,9 +6,10 @@ sidebar: user_sidebar
 permalink: docker-native.html
 folder: setup
 ---
-You can run the Che server directly by launching a Docker image. This approach bypasses the CLI, which has additional utilities to simplify administration and operation. The `eclipse/che-server` Docker image is appropriate for running Che within clusters, orchestrators, or by third party tools with automation.
 
 ## Run the Image  
+
+You can run the Che server directly by launching a Docker image. This approach bypasses the CLI, which has additional utilities to simplify administration and operation. The `eclipse/che-server` Docker image is appropriate for running Che within clusters, orchestrators, or by third party tools with automation.
 
 ```shell  
 # Run the latest released version of Che
