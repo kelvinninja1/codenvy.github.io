@@ -15,3 +15,6 @@ allowed-tags:
   - extensions
   - assembly
   - dev_docs
+  - keycloak
+  - ldap
+  - organizations

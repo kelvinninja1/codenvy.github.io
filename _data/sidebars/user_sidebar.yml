@@ -67,7 +67,23 @@ entries:
     - title: Configuration on Docker
       url: /docker-config.html
       output: web, pdf
-
+    - title: CLI Reference
+      url: /cli-reference.html
+      output: web, pdf
     - title: Configuration on OpenShift
       url: /openshift-config.html
+      output: web, pdf
+
+  - title: User Management
+    output: web, pdf
+    folderitems:
+
+    - title: Authentication and Login
+      url: /user-management.html
+      output: web, pdf
+    - title: Organizations
+      url: /organizations.html
+      output: web, pdf
+    - title: Permissions
+      url: /permissions.html
       output: web, pdf

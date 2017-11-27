@@ -177,6 +177,38 @@ docker run <other-properties> -v /tmp/offline:/data/backup eclipse/che:<version>
 The `--offline` parameter instructs the Che CLI to load all of the TAR files located in the folder mounted to `/data/backup`. These images will then be used instead of routing out to the Internet to check for DockerHub. The preboot sequence takes place before any CLI functions make use of Docker. The `eclipse/che start`, `eclipse/che download`, and `eclipse/che init` commands support `--offline` mode which triggers this preboot sequence.
 
 
+## Upgrade
+
+Upgrading Che is done by downloading a `eclipse/che-cli:<version>` that is newer than the version you currently have installed. You can run `eclipse/che-cli version` to see the list of available versions that you can upgrade to.
+
+For example, if you have 5.0.0-M2 installed and want to upgrade to 5.0.0-M8, then:
+
+```
+# Get the new version of Che
+docker pull eclipse/che-cli:5.0.0-M8
+
+# You now have two eclipse/che-cli images (one for each version)
+# Perform an upgrade - use the new image to upgrade old installation
+docker run <volume-mounts> eclipse/che-cli:5.0.0-M8 upgrade
+```
+
+The upgrade command has numerous checks to prevent you from upgrading Che if the new image and the old version are not compatible. In order for the upgrade procedure to advance, the CLI image must be newer that the version in `/instance/che.ver`.
+
+The upgrade process:
+
+1. Performs a version compatibility check
+2. Downloads new Docker images that are needed to run the new version of Che
+3. Stops Che if it is currently running
+4. Triggers a maintenance window
+5. Backs up your installation
+6. Initializes the new version
+7. Starts Che
+8. Important! If `CHE_PREDEFINED_STACKS_RELOAD__ON__START` is set to false, stacks packaged into new binaries will not be saved into a database.
+
+## Backup
+
+You can run `che backup` to create a copy of the relevant configuration information, user data, projects, and workspaces. We do not save workspace snapshots as part of a routine backup exercise. You can run `che restore` to recover Che from a particular backup snapshot. The backup is saved as a TAR file that you can keep in your records. You can then use `che restore` to recover your user data and configuration.
+
 ## Configuration
 
 Che CLI allows a wide range of config changes to setup port, hostname, oAuth, Docker, git, and solve networking issues. See: [Che configuration on Docker][docker-config].
