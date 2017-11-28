@@ -181,15 +181,15 @@ The `--offline` parameter instructs the Che CLI to load all of the TAR files loc
 
 Upgrading Che is done by downloading a `eclipse/che-cli:<version>` that is newer than the version you currently have installed. You can run `eclipse/che-cli version` to see the list of available versions that you can upgrade to.
 
-For example, if you have 5.0.0-M2 installed and want to upgrade to 5.0.0-M8, then:
+For example, if you have 5.0.0-M2 installed and want to upgrade to 6.0.0, then:
 
 ```
 # Get the new version of Che
-docker pull eclipse/che-cli:5.0.0-M8
+docker pull eclipse/che-cli:6.0.0
 
 # You now have two eclipse/che-cli images (one for each version)
 # Perform an upgrade - use the new image to upgrade old installation
-docker run <volume-mounts> eclipse/che-cli:5.0.0-M8 upgrade
+docker run <volume-mounts> eclipse/che-cli:6.0.1 upgrade
 ```
 
 The upgrade command has numerous checks to prevent you from upgrading Che if the new image and the old version are not compatible. In order for the upgrade procedure to advance, the CLI image must be newer that the version in `/instance/che.ver`.
