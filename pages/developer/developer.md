@@ -27,7 +27,7 @@ When the project shows up in project explorer, you will find 2 main Maven module
 
 Execute `Traefik Start`, `Tomcat8-IDE Start`, `Deploy IDE` and `Deploy Workspace Agent` commands:
 
-{% include image.html file="devel/debug_chrome.png" %}
+{% include image.html file="devel/commands.png" %}
 
 * Tomcat8-IDE Start - the name speaks for itself. The command starts a Tomcat 8 server
 * Traefik Start - we need some smart redirects inside a workspace. By design, the IDE tries to reach workspace master at the same host:port it is running. Since we will access the 2nd IDE instance on the same host, but a different port (it's a random port from the ephemeral port range that Docker uses to publish exposed ports)
