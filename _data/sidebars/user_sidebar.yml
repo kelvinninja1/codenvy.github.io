@@ -87,3 +87,58 @@ entries:
     - title: Permissions
       url: /permissions.html
       output: web, pdf
+
+  - title: Administering Workspaces
+    output: web, pdf
+    folderitems:
+
+    - title: What Are Workspaces?
+      url: /what_are_workspaces.html
+      output: web, pdf
+    - title: Workspace Data Model
+      url: /workspace_data_model.html
+      output: web, pdf
+    - title: Installers
+      url: /installers.html
+      output: web, pdf
+    - title: Stacks
+      url: /stacks.html
+      output: web, pdf
+    - title: Recipes
+      url: /recipes.html
+      output: web, pdf
+    - title: Volumes
+      url: /wvolumes.html
+      output: web, pdf
+
+  - title: Portable Workspaces
+    output: web, pdf
+    folderitems:
+
+    - title: Getting Started
+      url: /getting_started.html
+      output: web, pdf
+    - title: Why Chedir?
+      url: /why_chedir.html
+      output: web, pdf
+    - title: Up and Down
+      url: /chedir_up_and_down.html
+      output: web, pdf
+    - title: Chefile
+      url: /chefile.html
+      output: web, pdf
+    - title: SSH
+      url: /chedir_ssh.html
+      output: web, pdf
+    - title: Factories Overview
+      url: /factories.html
+      output: web, pdf
+    - title: Factories Getting Started
+      url: /factories_getting_started.html
+      output: web, pdf
+    - title: Creating Factories
+      url: /creating_factories.html
+      output: web, pdf
+    - title: Factories JSON Reference
+      url: /factories_json_reference.html
+      output: web, pdf

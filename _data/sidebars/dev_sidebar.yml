@@ -35,8 +35,8 @@ entries:
   - title: SPI
     output: web
     folderitems:
-    - title: Overview and Core Concepts
-      url: /spi-overview.html
+    - title: Overview and Motivation
+      url: /spi.html
       output: web
   - title: Dev Essentials
     output: web
