@@ -53,9 +53,13 @@ OpenShift cluster admins may want to study docs on [distributed volumes](https:/
 
 To enable https for server and workspace routes, export the following environment variable:
 
-`OC_SKIP_TLS=false`
+`ENABLE_SSL=true`
 
 When deploying to OSIO, HTTPS is enabled by default.
+
+## Scalability
+
+To be able to run more workspaces, [add more nodes to your OpenShift cluster](https://docs.openshift.com/container-platform/3.7/admin_guide/manage_nodes.html). If the system is out of resources, workspace start will fail with an error message returned from OpenShift (usually it's `no available nodes` kind of error).
 
 ## Debug Mode
 
