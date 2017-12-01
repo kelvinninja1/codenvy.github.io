@@ -39,12 +39,14 @@ You may have one common namespace for all workspace pods:
 
 `CHE_INFRA_OPENSHIFT_PVC_STRATEGY="unique"`
 
-There are two [Persistent Volume Claim](https://docs.openshift.com/container-platform/3.6/dev_guide/persistent_volumes.html) strategies:
+There are two [Persistent Volume Claim](https://docs.openshift.com/container-platform/3.7/dev_guide/persistent_volumes.html) strategies:
 
 * **unique** - each workspace gets own PVC. When a workspace is deleted, associated PVC is deleted as well. This is the default strategy.
 * **common** - there is one PVC for all workaspaces. When a PVC is shared with all workspaces, there's a special service pod that starts before workspace is created to create a subpath in the PV for this particular ws. When a workspace is deleted an associated subpath is deleted as well.
 
-If a common strategy is set, it is impossible to run multiple workspaces simultaneously because of a default `ReadWriteOnce` [access mode](https://docs.openshift.com/container-platform/3.6/architecture/additional_concepts/storage.html#pv-access-modes) for workspace PVCs.
+If a common strategy is set, it is impossible to run multiple workspaces simultaneously because of a default `ReadWriteOnce` [access mode](https://docs.openshift.com/container-platform/3.7/architecture/additional_concepts/storage.html#pv-access-modes) for workspace PVCs.
+
+OpenShift cluster admins may want to study docs on [distributed volumes](https://docs.openshift.com/container-platform/3.7/install_config/persistent_storage/index.html) and [applying resource limits](https://docs.openshift.com/container-platform/3.7/admin_guide/quota.html).
 
 ## HTTPS Mode
 
