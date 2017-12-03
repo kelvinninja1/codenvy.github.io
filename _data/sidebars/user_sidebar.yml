@@ -118,8 +118,11 @@ entries:
     - title: Volumes
       url: /volumes.html
       output: web, pdf
-    - title: Env Variavles
+    - title: Env Variables
       url: /env_variables.html
+      output: web, pdf
+    - title: Projects
+      url: /projects.html
       output: web, pdf
     - title: Troubleshooting
       url: /workspaces_troubleshooting.html
