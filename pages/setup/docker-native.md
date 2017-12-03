@@ -89,7 +89,7 @@ There are many variables that can be set.
 | `CHE_ASSEMBLY`   | The path to a Che assembly that is on your host to be used instead of the assembly packaged within the `che-server` image. If you set this variable, you must also volume mount the same directory to `/home/user/che`   | `/home/user/che`   
 | `CHE_IN_VM`   | Set to 'true' if this container is running inside of a VM providing Docker such as boot2docker, Docker for Mac, or Docker for Windows. We auto-detect this for most situations, but it's not always perfect.   | auto-detection   
 | `CHE_LOG_LEVEL`   | Logging level of output for Che server. Can be `debug` or `info`.   | `info`   
-| `CHE_IP`   | IP address Che server will bind to. Used by browsers to contact workspaces. You must set this IP address if you want to bind the Che server to an external IP address that is not the same as Docker's.   | The IP address set to the Docker host. This does cover 99% of situations, but on rare occassions we are not able to discover this IP address and you must provide it.   
+| `CHE_HOST`   | IP address/hostname Che server will bind to. Used by browsers to contact workspaces. You must set this IP address if you want to bind the Che server to an external IP address that is not the same as Docker's.   | The IP address set to the Docker host. This does cover 99% of situations, but on rare occassions we are not able to discover this IP address and you must provide it.   
 | `CHE_DEBUG_SERVER`   | If `true`, then will launch the Che server with JPDA activated so that you a Java debugger can attach to the Che server for debugging plugins, extensions, and core libraries.   | `false`   
 | `CHE_DEBUG_SERVER_PORT`   | The port that the JPDA debugger will listen.   | `8000`   
 | `CHE_DEBUG_SERVER_SUSPEND`   | If `true`, then activates `JPDA_SUSPEND` flag for Tomcat running the Che server. Used for advanced internal debugging of extensions.   | `false`   
@@ -119,7 +119,7 @@ We run an auto-detection algorithm within the che-server container to determine 
 ```shell  
 docker run -p:8080:8080 \
            --name che \
-           -e CHE_IP=10.0.75.4 \
+           -e CHE_HOST=10.0.75.4 \
            -v /var/run/docker.sock:/var/run/docker.sock \
            -v <LOCAL_PATH>:/data \
            eclipse/che-server:6.0.0

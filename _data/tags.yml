@@ -8,6 +8,7 @@ allowed-tags:
   - kubernetes
   - openshift
   - runtime
+  - workspace
   - debugger
   - troubleshooting
   - networking
@@ -18,3 +19,5 @@ allowed-tags:
   - keycloak
   - ldap
   - organizations
+  - chedir
+  - factories

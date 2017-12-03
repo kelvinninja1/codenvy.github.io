@@ -1,7 +1,7 @@
 ---
 title: "User Management"
 keywords: organizations, user management, permissions
-tags: [ldap]
+tags: [ldap, keycloak]
 sidebar: user_sidebar
 permalink: user-management.html
 folder: user-management

@@ -7,6 +7,8 @@ permalink: openshift-config.html
 folder: configuration
 ---
 
+!IMPORTANT https://github.com/eclipse/che/pull/7692
+
 You can configure deployment of Che on OpenShift with env variables that are then saved into a [ConfigMap](https://github.com/eclipse/che/blob/che6/dockerfiles/init/modules/openshift/files/scripts/che-openshift.yml#L50). Export envs before running the script.
 
 ## OpenShift Flavor

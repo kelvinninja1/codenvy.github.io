@@ -88,7 +88,9 @@ entries:
       url: /permissions.html
       output: web, pdf
 
-  - title: Administering Workspaces
+# Workspaces, data model, creating workspaces and troubleshooting
+
+  - title: Workspaces in Che
     output: web, pdf
     folderitems:
 
@@ -98,8 +100,8 @@ entries:
     - title: Workspace Data Model
       url: /workspace_data_model.html
       output: web, pdf
-    - title: Installers
-      url: /installers.html
+    - title: Creating, Starting and Sharing Workspaces
+      url: /creating_starting_workspaces.html
       output: web, pdf
     - title: Stacks
       url: /stacks.html
@@ -107,19 +109,63 @@ entries:
     - title: Recipes
       url: /recipes.html
       output: web, pdf
-    - title: Volumes
-      url: /wvolumes.html
+    - title: Installers
+      url: /installers.html
       output: web, pdf
+    - title: Servers
+      url: /servers.html
+      output: web, pdf
+    - title: Volumes
+      url: /volumes.html
+      output: web, pdf
+    - title: Env Variavles
+      url: /env_variables.html
+      output: web, pdf
+    - title: Troubleshooting
+      url: /workspaces_troubleshooting.html
+      output: web, pdf
+
+# IDE related pages
+
+  - title: IDE and Editor
+    output: web, pdf
+    folderitems:
+      - title: Projects
+        url: /projects.html
+        output: web, pdf
+      - title: Editor and Code-Assistance
+        url: /editor_code_assistance.html
+        output: web, pdf
+      - title: Dependency Management
+        url: /dependency_management.html
+        output: web, pdf
+      - title: Commands and IDE Macros
+        url: /commands_ide_macro.html
+        output: web, pdf
+      - title: Version Control
+        url: /version_control.html
+        output: web, pdf
+      - title: Debug
+        url: /debug.html
+        output: web, pdf
+
+# Chedir and Factories
 
   - title: Portable Workspaces
     output: web, pdf
     folderitems:
 
     - title: Getting Started
-      url: /getting_started.html
+      url: /chedir_getting_started.html
       output: web, pdf
     - title: Why Chedir?
       url: /why_chedir.html
+      output: web, pdf
+    - title: Installation
+      url: /chedir_installation.html
+      output: web, pdf
+    - title: Project Setup
+      url: /chedir_project_setup.html
       output: web, pdf
     - title: Up and Down
       url: /chedir_up_and_down.html
